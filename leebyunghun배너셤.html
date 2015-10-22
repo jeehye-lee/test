@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이병헌</title>
+    <script type="text/javascript" src="../js/jquery/jquery-1.11.3.min.js"></script>
+    <script>
+
+
+    $(document).ready(function(){
+        var idx = 0
+        $('.slide li').eq(idx).fadeIn()
+
+        var inner = setInterval(function(){
+                    $('.slide li').eq(idx).fadeIn().siblings().fadeOut()
+                    idx += 1
+
+                    if(idx == 3){
+                        idx = 0
+                    }
+                },1000)
+
+
+
+        $('.slide').hover(function(){
+            clearInterval(inner)
+        },function(){
+            inner =  setInterval(function(){
+                    $('.slide li').eq(idx).fadeIn().siblings().fadeOut()
+                    idx += 1
+
+                    if(idx == 3){
+                        idx = 0
+                    }
+                },1000)
+        })
+
+
+
+
+        $('.controll button').click(function(){
+
+            var idx = $(this).index()
+            console.log(idx)
+            $('.slide li').eq(idx).fadeIn().siblings().fadeOut()
+
+
+        })
+
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+    <style>
+    *{margin:0; padding:0}
+    ul,li{list-style:none;}
+
+    .slide{position:relative;}
+    .slide ul li img{width:100%}
+    .slide li{position:absolute; display:none;}
+
+
+    .controll{position:absolute; left:50%; top:350px;}
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+    <div class="slide">
+        <ul>
+            <li>
+                <!-- <a href="">1</a> -->
+                <div><img src="../img/add_img01.jpg" alt=""></div>
+            </li>
+            <li>
+                <!-- <a href="">2</a> -->
+                <div><img src="../img/add_img02.jpg" alt=""></div>
+            </li>
+            <li>
+                <!-- <a href="">3</a> -->
+                <div><img src="../img/add_img03.jpg" alt=""></div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="controll">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+    </div>
+
+
+
+</body>
+</html>
